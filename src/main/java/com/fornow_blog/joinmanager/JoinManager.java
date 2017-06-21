@@ -102,11 +102,11 @@ public class JoinManager extends JavaPlugin {
 		sender.sendMessage(ChatColor.GREEN + "サーバーを閉鎖しました");
 	}
 
-	private void jmServerLimitSet(CommandSender sender, String string) {
+	private void jmServerLimitSet(CommandSender sender, String limitPlayersNum) {
 		int limitplayers = 0;
 
 		try {
-			limitplayers = Integer.parseInt(string);
+			limitplayers = Integer.parseInt(limitPlayersNum);
 		} catch (Exception e) {
 			sender.sendMessage(ChatColor.RED + "上限は数値で指定してください");
 		}
@@ -122,8 +122,8 @@ public class JoinManager extends JavaPlugin {
 		sender.sendMessage(ChatColor.GREEN + "プレイヤー上限を" + limitplayers + "人に設定しました");
 	}
 
-	private void jmServerPlayerAdd(CommandSender sender, String string) {
-		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(string));
+	private void jmServerPlayerAdd(CommandSender sender, String playerName) {
+		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(playerName));
 
 		cfg.set("players.", player.getName());
 		saveConfig();
@@ -131,8 +131,8 @@ public class JoinManager extends JavaPlugin {
 
 	}
 
-	private void jmServerPlayerRemove(CommandSender sender, String string) {
-		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(string));
+	private void jmServerPlayerRemove(CommandSender sender, String playerName) {
+		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(playerName));
 
 		cfg.set("players", player.getName());
 		saveConfig();
