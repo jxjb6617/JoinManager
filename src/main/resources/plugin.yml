@@ -1,44 +1,13 @@
 name: JoinManager
-main: com.fornow_blog.JoinManager
+main: com.fornow_blog.joinmanager.JoinManager
 version: 0.0.1
 authors: [yuto0513, togtog]
 permissions:
   joinmanager.*:
     description: Gives access to all joinmanager commands.
 commands:
-  jm help:
+  jm:
     description: This is commands of JoinManager.
     usage: /<command> help
     permission: joinmanager.help
     permission-message: You do not have <permission>.
-    aliases: jmh
-  jm open:
-    description: This is a command to release the server.
-    usage: /<command> open
-    permission: joinmanager.open
-    permission-message: You do not have <permission>.
-    aliases: jmo
-  jm close:
-    description: This is a command to close the server.
-    usage: /<command> close
-    permission: joinmanager.close
-    permission-message: You do not have <permission>.
-    aliases: jmc
-  jm limit:
-    description: This is a command to set the maximum number of connected users of the server.
-    usage: /<command> limit <Number>
-    permission: joinmanager.limit
-    permission-message: You do not have <permission>.
-    aliases: jml
-  jm add:
-    description: This is a command to add a player that can connect to the server.
-    usage: /<command> add <Player>
-    permission: joinmanager.add
-    permission-message: You do not have <permission>.
-    aliases: jma
-  jm remove:
-    description: This is a command to delete the player who can connect to the server.
-    usage: /<command> remove <Player>
-    permission: joinmanager.remove
-    permission-message: You do not have <permission>.
-    aliases: jmr
