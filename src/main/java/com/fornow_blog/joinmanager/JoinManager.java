@@ -58,10 +58,21 @@ public class JoinManager extends JavaPlugin {
 
 	private boolean jmCmdCheck(CommandSender sender, Command cmd, String[] args) {
 
-		String subc = args.length == 0 ? "" : args[0];
+		String subc = "";
+		String subc1 = "";
+
+		if (args.length <= 1) {
+			subc = args[0];
+		}
+
+		if (args.length <= 2) {
+			subc1 = args[1];
+		}
+
 		String cmds = cmd.getName();
 		//コマンド処理軍
 		if (cmds.equalsIgnoreCase("jm")) {
+
 			if (subc.equalsIgnoreCase("help")) {
 				sendHelpMessage(sender);
 			} else if (subc.equalsIgnoreCase("open")) {
@@ -69,11 +80,11 @@ public class JoinManager extends JavaPlugin {
 			} else if (subc.equalsIgnoreCase("close")) {
 				jmServerClose(sender);
 			} else if (subc.equalsIgnoreCase("limit")) {
-				return jmServerLimitSet(sender, subc); //ここだけbooleanをreturn
+				return jmServerLimitSet(sender, subc1); //ここだけbooleanをreturn
 			} else if (subc.equalsIgnoreCase("add")) {
-				return jmServerPlayerAdd(sender, subc);
+				return jmServerPlayerAdd(sender, subc1);
 			} else if (subc.equalsIgnoreCase("remove")) {
-				return jmServerPlayerRemove(sender, subc);
+				return jmServerPlayerRemove(sender, subc1);
 			} else if (subc.equalsIgnoreCase("allow")) {
 				jmServerRensenAllow(sender);
 			} else if (subc.equalsIgnoreCase("deny")) {
