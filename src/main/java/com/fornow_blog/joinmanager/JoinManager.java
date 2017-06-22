@@ -71,9 +71,9 @@ public class JoinManager extends JavaPlugin {
 			} else if (subc.equalsIgnoreCase("limit")) {
 				return jmServerLimitSet(sender, subc); //ここだけbooleanをreturn
 			} else if (subc.equalsIgnoreCase("add")) {
-				jmServerPlayerAdd(sender, subc);
+				return jmServerPlayerAdd(sender, subc);
 			} else if (subc.equalsIgnoreCase("remove")) {
-				jmServerPlayerRemove(sender, subc);
+				return jmServerPlayerRemove(sender, subc);
 			} else if (subc.equalsIgnoreCase("allow")) {
 				jmServerRensenAllow(sender);
 			} else if (subc.equalsIgnoreCase("deny")) {
@@ -143,22 +143,28 @@ public class JoinManager extends JavaPlugin {
 		return true;
 	}
 
-	private void jmServerPlayerAdd(CommandSender sender, String playerName) {
+	private boolean jmServerPlayerAdd(CommandSender sender, String playerName) {
+		if (playerName.equals("")) {
+			return false;
+		}
 		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(playerName));
 
 		cfg.set("players.", player.getName());
 		saveConfig();
 		sender.sendMessage(ChatColor.GREEN + player.getName() + "を追加しました");
-
+		return true;
 	}
 
-	private void jmServerPlayerRemove(CommandSender sender, String playerName) {
+	private boolean jmServerPlayerRemove(CommandSender sender, String playerName) {
+		if (playerName.equals("")) {
+			return false;
+		}
 		OfflinePlayer player = Bukkit.getOfflinePlayer(UUID.fromString(playerName));
 
 		cfg.set("players", player.getName());
 		saveConfig();
 		sender.sendMessage(ChatColor.GREEN + player.getName() + "を削除しました");
-
+		return true;
 	}
 
 	private void jmServerRensenAllow(CommandSender sender) {
