@@ -58,27 +58,27 @@ public class JoinManager extends JavaPlugin {
 
 	private boolean jmCmdCheck(CommandSender sender, Command cmd, String[] args) {
 
-		String subc = args.length == 0 ? "" : args[1];
+		String subc = args.length == 0 ? "" : args[0];
 		String cmds = cmd.getName();
 		//コマンド処理軍
 		if (cmds.equalsIgnoreCase("jm")) {
-			if (args[0].equalsIgnoreCase("help")) {
+			if (subc.equalsIgnoreCase("help")) {
 				sendHelpMessage(sender);
-			} else if (cmds.equalsIgnoreCase("open")) {
+			} else if (subc.equalsIgnoreCase("open")) {
 				jmServerOpen(sender);
-			} else if (cmds.equalsIgnoreCase("close")) {
+			} else if (subc.equalsIgnoreCase("close")) {
 				jmServerClose(sender);
-			} else if (cmds.equalsIgnoreCase("limit")) {
+			} else if (subc.equalsIgnoreCase("limit")) {
 				return jmServerLimitSet(sender, subc); //ここだけbooleanをreturn
-			} else if (cmds.equalsIgnoreCase("add")) {
+			} else if (subc.equalsIgnoreCase("add")) {
 				jmServerPlayerAdd(sender, subc);
-			} else if (cmds.equalsIgnoreCase("remove")) {
+			} else if (subc.equalsIgnoreCase("remove")) {
 				jmServerPlayerRemove(sender, subc);
-			} else if (cmds.equalsIgnoreCase("allow")) {
+			} else if (subc.equalsIgnoreCase("allow")) {
 				jmServerRensenAllow(sender);
-			} else if (cmds.equalsIgnoreCase("deny")) {
+			} else if (subc.equalsIgnoreCase("deny")) {
 				jmServerRensenDeny(sender);
-			} else if (cmds.equalsIgnoreCase("save")) {
+			} else if (subc.equalsIgnoreCase("save")) {
 				jmServerRensenDataSave(sender);
 			} else {
 				sendHelpMessage(sender);
@@ -125,7 +125,7 @@ public class JoinManager extends JavaPlugin {
 		try {
 			limitplayers = Integer.parseInt(limitPlayersNum);
 		} catch (Exception e) {
-			sender.sendMessage(ChatColor.RED + "上限は数値で指定してください");
+			sender.sendMessage(ChatColor.RED + e.getMessage() + "  :上限は数値で指定してください");
 			return false;
 		}
 
